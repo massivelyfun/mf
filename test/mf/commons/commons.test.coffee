@@ -5,6 +5,7 @@ Set           = mf.component "commons/collection/set"
 StateGuard    = mf.component "commons/util/stateGuard"
 Configuration = mf.component "commons/util/configuration"
 StateLatch    = mf.component "commons/util/stateLatch"
+FourBitPacker = mf.component "commons/util/fourBitPacker"
 
 suite "Commons", () ->
   test "Set", () ->
@@ -100,3 +101,26 @@ suite "Commons", () ->
 
     s.record("one")
     s.record("two")
+
+  test "FourBitPacker", ->
+    # array of odd numbered length
+    ar = [1,2,3,5,6]
+
+    packer = new FourBitPacker
+    assert.ok str = packer.encode(ar)
+
+    assert.ok newAr = packer.decode(str)
+    assert.equal newAr.length, ar.length
+    for i in [0..ar.length - 1]
+      assert.equal ar[i], newAr[i]
+
+    # array of even numbered length
+    ar = [1,2,3,4,5,6]
+
+    packer = new FourBitPacker
+    assert.ok str = packer.encode(ar)
+
+    assert.ok newAr = packer.decode(str)
+    assert.equal newAr.length, ar.length
+    for i in [0..ar.length - 1]
+      assert.equal ar[i], newAr[i]
