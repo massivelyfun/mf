@@ -2,8 +2,7 @@ class FourBitPacker
   encode: (tileAr) ->
     outputString = ""
     for tile in tileAr
-      # this depends on there only being 16 possible tile types. mask
-      # to make sure.
+      # this depends on being fed a 4-bit int. mask to make sure.
       tile &= 0x0f
       if workingInt
         # if we have a workingInt, we've already filled its top 4
