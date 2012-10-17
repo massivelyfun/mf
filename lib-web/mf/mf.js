@@ -148,6 +148,17 @@
       }
     };
 
+    MfCore.prototype.getClassName = function(obj) {
+      var funcNameRegex, results;
+      funcNameRegex = /function (.{1,})\(/;
+      results = funcNameRegex.exec(obj.constructor.toString());
+      if (results && results.length > 1) {
+        return results[1];
+      } else {
+        return "";
+      }
+    };
+
     MfCore.prototype.registerKlass = function(key, klass) {
       return this.klasses[key] = klass;
     };
