@@ -139,11 +139,11 @@
 
     MfCore.prototype.noop = function() {};
 
-    MfCore.prototype.once = function(token, fun) {
+    MfCore.prototype.once = function(token, fn) {
       if (this.onces[token] == null) {
         this.onces[token] = true;
         try {
-          return fun();
+          return fn();
         } catch (e) {
 
         }
@@ -169,12 +169,12 @@
       return obj;
     };
 
-    MfCore.prototype.runIf = function(cond, fun) {
+    MfCore.prototype.runIf = function(cond, fn) {
       if (typeof cond === "function") {
         cond = cond();
       }
       if (cond) {
-        return fun();
+        return fn();
       }
     };
 
@@ -326,9 +326,9 @@
     MfTaskManager.prototype.ticker = function() {
       var self;
       self = this;
-      return function(fun) {
-        if (fun != null) {
-          return self.runTaskFast(fun);
+      return function(fn) {
+        if (fn != null) {
+          return self.runTaskFast(fn);
         }
       };
     };
@@ -336,12 +336,12 @@
     MfTaskManager.prototype.delayer = function() {
       var tick;
       tick = this.ticker();
-      return function(fun) {
+      return function(fn) {
         return function() {
           var args;
           args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
           return tick(function() {
-            return fun.apply(null, args);
+            return fn.apply(null, args);
           });
         };
       };
@@ -360,10 +360,10 @@
 
     ActionSubscription = (function() {
 
-      function ActionSubscription(subject, action, fun) {
+      function ActionSubscription(subject, action, fn) {
         this.subject = subject;
         this.action = action;
-        this.fun = fun;
+        this.fn = fn;
       }
 
       ActionSubscription.prototype.cancel = function() {
@@ -382,10 +382,10 @@
         this.subscriptions = {};
       }
 
-      Subject.prototype.subscribe = function(action, fun) {
+      Subject.prototype.subscribe = function(action, fn) {
         var sub, _base;
         (_base = this.subscriptions)[action] || (_base[action] = []);
-        sub = new ActionSubscription(this, action, fun);
+        sub = new ActionSubscription(this, action, fn);
         this.subscriptions[action].push(sub);
         return sub;
       };
@@ -404,17 +404,17 @@
           }
           return _results;
         }).call(this);
-        return actionSubscription.fun;
+        return actionSubscription.fn;
       };
 
-      Subject.prototype.cancel = function(action, fun) {
+      Subject.prototype.cancel = function(action, fn) {
         var actionSub, _base, _i, _len, _ref, _results;
         (_base = this.subscriptions)[action] || (_base[action] = []);
         _ref = this.subscriptions[action];
         _results = [];
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           actionSub = _ref[_i];
-          if (actionSub.fun === fun) {
+          if (actionSub.fn === fn) {
             _results.push(this._internalCancel(actionSub));
           }
         }
@@ -432,7 +432,7 @@
           subscription = _ref[_i];
           _results.push((function(subscription) {
             return taskManager.runTaskFast((function() {
-              return subscription.fun(additionalArgs);
+              return subscription.fn(additionalArgs);
             }));
           })(subscription));
         }
@@ -470,11 +470,11 @@
       return subject;
     };
 
-    MfNotificationCenter.prototype.subscribe = function(obj, action, fun) {
+    MfNotificationCenter.prototype.subscribe = function(obj, action, fn) {
       var sub;
       sub = this._subjectForObject(obj);
       if (sub != null) {
-        return sub.subscribe(action, fun);
+        return sub.subscribe(action, fn);
       }
     };
 
@@ -485,11 +485,11 @@
       return sub.notify(this.taskManager, action, additionalArgs);
     };
 
-    MfNotificationCenter.prototype.cancel = function(obj, action, fun) {
+    MfNotificationCenter.prototype.cancel = function(obj, action, fn) {
       var sub;
       sub = this._subjectForObject(obj);
       if (sub != null) {
-        return sub.cancel(action, fun);
+        return sub.cancel(action, fn);
       }
     };
 
