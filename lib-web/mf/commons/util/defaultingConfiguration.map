@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "defaultingConfiguration.js",
+  "sourceRoot": "",
+  "sources": [
+    "defaultingConfiguration.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA;CAAA,KAAA,2EAAA;KAAA;oSAAA;CAAA;CAAA,CAAA,CAAK,IAAA,GAAA;;CAAL,CACA,CAAgB,MAAA,IAAhB,EAAgB;;CADhB,CAEA,CAAmB,MAAA,OAAnB,EAAmB;;CAFnB,CAGA,CAAsB,MAAA,UAAtB,EAAsB;;CAHtB,CAIM;CACL;CAAA;;CAAc,CAAmB,CAAnB,CAAA,SAAA,GAAA,iBAAC;CACZ,SAAA,GAAA;CAAA,CAAgD,CAA5B,CAAA,EAApB,OAAA,GAAoB;CAApB,CACsE,CAAxD,CAAb,EAAD,OAAsC,GAAA,GAAxB;CAFjB,IAAc;;CAAd;;CADqC;;CAJtC,CASA,CAAiB,GAAX,CAAN,gBATA;CAAA"
+}

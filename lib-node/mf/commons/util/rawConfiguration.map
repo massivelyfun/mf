@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "rawConfiguration.js",
+  "sourceRoot": "",
+  "sources": [
+    "rawConfiguration.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA;CAAA,KAAA,UAAA;CAAA;CAAA,CAAM;CACL;CAAc,CAAW,CAAX,CAAA,IAAA,CAAA,iBAAC;;GAAsB,KAAZ;QACtB;CAAA,EAAa,CAAZ,EAAD,GAAA;CAAA,EACY,CAAX,EAAD,EAAA;CAFH,IAAc;;CAAd,CAIY,CAAX,MAAM,CAAD;CACH,SAAA,QAAA;CADG,EACoD;CAL1D,IAIM;;CAJN;;CADD;;CAAA,CAQA,CAAiB,GAAX,CAAN,SARA;CAAA"
+}
