@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "file": "idGen.js",
+  "sourceRoot": "",
+  "sources": [
+    "idGen.coffee"
+  ],
+  "names": [],
+  "mappings": "AAAA;CAAA,KAAA,KAAA;CAAA;CAAA,CAAA,CAAO,CAAP,GAAO,EAAA,CAAA,SAAA;;CAAP,CAEM;CACL;CAAA;;CAAA,EAAW,EAAA,GAAV,CAAW;CACE,CAAX,CAAE,CAAa,CAAf,GAAW,KAAX;CADH,IAAW;;CAAX;;CAHD;;AAMiB,CANjB,CAMA,CAAiB,EANjB,CAMM,CAAN;CANA"
+}
