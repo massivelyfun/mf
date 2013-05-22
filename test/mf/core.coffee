@@ -51,6 +51,11 @@ suite "MF Core", () ->
     assert.equal thing.foo, foo.foo
     assert.equal thing.bar, foo.bar
 
+  test "mf.core.runTask works", (done) ->
+    tm = mf.core.taskManager()
+    tm.runTask ->
+      done()
+
 suite "MF Messages", () ->
   test "MfMessages is defined", () ->
     assert.isObject mf.messages
