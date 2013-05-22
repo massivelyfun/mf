@@ -213,7 +213,8 @@ class MfTaskManager
   runTask: (task, after) ->
     return unless task
     wrapped = @wrapWithHandler(task)
-    if tick = @tick and not after?
+    tick = @tick
+    if tick and not after?
       # Just wait two ticks
       tick ->
         tick wrapped
